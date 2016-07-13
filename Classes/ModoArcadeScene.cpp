@@ -1834,7 +1834,7 @@ bool ModoArcade::init()
 
     // set the background music and continuously play it.
     //auto audio = CocosDenshion::SimpleAudioEngine::getInstance();
-    audioMCC->playBackgroundMusic("Audio/track01.mp3", true);
+    audioMCC->playBackgroundMusic("Audio/DoneD.mp3", true);
 
     // Pausa o continua el juego
     auto pausa = cocos2d::EventListenerKeyboard::create();
