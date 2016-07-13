@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="32" tileheight="32" nextobjectid="20">
+ <tileset firstgid="1" name="rpg1" tilewidth="32" tileheight="32" tilecount="2016" columns="32">
+  <image source="rpg1.png" width="1024" height="2016"/>
+  <tile id="256">
+   <properties>
+    <property name="onTop" value="True"/>
+   </properties>
+  </tile>
+  <tile id="261">
+   <properties>
+    <property name="collisionTop" value="True"/>
+   </properties>
+  </tile>
+  <tile id="262">
+   <properties>
+    <property name="top2" value="True"/>
+   </properties>
+  </tile>
+  <tile id="263">
+   <properties>
+    <property name="Collision" value="True"/>
+   </properties>
+  </tile>
+  <tile id="295">
+   <properties>
+    <property name="notTop" value="True"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="2017" name="tank3" tilewidth="96" tileheight="96" tilecount="2" columns="1">
+  <image source="tank3.png" width="110" height="264"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="32" height="24">
+  <data encoding="base64" compression="zlib">
+   eJztwwENAAAMAiAf3eYGOWz0kqqqqi8OnkmGEA==
+  </data>
+ </layer>
+ <objectgroup draworder="index" name="Objects">
+  <object id="2" name="Player2" x="642" y="256" width="65" height="98"/>
+  <object id="19" name="Player1" x="99" y="226" width="65" height="108"/>
+ </objectgroup>
+ <layer name="Tile Layer 2" width="32" height="24">
+  <data encoding="base64" compression="zlib">
+   eJytljtOxDAQhp1ohRsauMlygw2pkcINlib93gAkCgQC9hgUPDu4AQXPDu5AASdgrMTKn9mxM8lmpJGtscff2Mr8ijHjWD5p5jNbjXNbubNpasx90vaddCQ4s8xWNRzU7JJqK4j1kbR9P8AvJ3JcY+e2mR/Z1fUTil3Wvo7tbcTXs8D5VwruLe25U+zbpRryjjq4PbNzT+2qv5G/93ifTaihhLm/hzvzjPya/Ma24yHj7/Trvhfmf0m8Ln6PF5q/wv3mSr7E1tbC7zED7mE9Hgvfu8/j7G3qmQcat2hcsrUufgbcC+jPWJ7jINtpxmdS6Ymvw69p7u/fwJnUnzwPdcuxFzWngDpiWhbqt0eKPyn4qFsLgeHXpbUY/4vi34E13ydjmEZvuPk+kbQBa8M+7to7lmFtXTrl90om9RyaVm+k9x2iVV35oXM0Otmnhr5ax/lDdVLL5udwPuoV6hbGpRpCbJ6LcYk/TWXNxLiklSEGz8W4xC/SRhN/TKOZGJe0MsTguVyHpe/fa6Ljoy7GtDLGwFyeP0TfQsYZueI/dF3+P7amnpw=
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="32" height="24">
+  <data encoding="base64" compression="zlib">
+   eJzTYGGAAyckNjawk52BYRc7+fIgsIiAPDrQQHLTTaDeW+y43QmTxwcOkWg/PsDMxsDAwoZdjlBYUgMoA+1WwWH/cARPmYen/alUSCvpdEhvuEAlFfMUOvjAxMDAxAzBb5hoZw897SelbBiO/ocBWDjgqzdoZX8qlnqFnvYTCyi1v4YGeZOQOz5gkadm+cQDDAteHJgfiAVoXE/oAM1nxIMNyLS/lcgw8gGa74sD+wNxwADXk5QCYsNhFFAOAN+5Jg4=
+  </data>
+ </layer>
+ <layer name="Collision" width="32" height="24">
+  <data encoding="base64" compression="zlib">
+   eJzFVUEOwCAI2y5z/3/xLjsQA7RFiU2IiwhVV+G9r+s9bBmsH8WwXIgf7QntV93nbh42bxe/mmMVs0Y6+FntKFDeQKYlOyp8DP/s92JUve14/2oeLyfLP37LakhFd0zcc/vfXi4Fu/hXwNxDFz/7/07wz/NWf9XcUZ9Te0fVz3CpdeRxrFJPPB/CCNZ68xGPV09QrJ2Pzp9pKeO3YxSLkPWYyJetq/YMdB6Wf+UuENQzd9gHc7IKog==
+  </data>
+ </layer>
+ <layer name="Tile Layer 5" width="32" height="24">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDGUQyT7QLhgFo2AUYAMxo3lzyIBUFuLV6jIzMOgBsT4zhI3MpwQMdFmeyUZaOIyCoQ0AVOQDuw==
+  </data>
+ </layer>
+ <layer name="onTop" width="32" height="24">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo4Aw0GBE4IGym3GA3ACzG4ZHwSgYBaNgFIyCwQpG66uBBQPZXiIFAADNzgHS
+  </data>
+ </layer>
+</map>
