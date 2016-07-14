@@ -10,6 +10,7 @@ using namespace std;
 
 auto audioAA = CocosDenshion::SimpleAudioEngine::getInstance();
 auto audioMCC = CocosDenshion::SimpleAudioEngine::getInstance();
+char* felipao;
 
 ////////////////////////////////
 //Manejo de fondos y movimientos
@@ -1906,8 +1907,10 @@ void ModoArcade::getUpgrade(Sprite *upgrade)
 
 }
 
-Scene* ModoArcade::createScene()
+Scene* ModoArcade::createScene(char *tS)
 {
+    felipao = tS;
+
     // 'scene' is an autorelease object
     auto scene = Scene::create();
 
@@ -1974,7 +1977,7 @@ bool ModoArcade::init()
     int x = Player["x"].asInt();
     int y = Player["y"].asInt();
     _player1 = p1.getPlayer();
-    _player1 =Sprite::create("tank3.png");
+    _player1 =Sprite::create(felipao);
     setPlayer1Position(ccp(x-50,y-50));
     _player1->setScale(0.3);
     tileMap->addChild(_player1,1);
@@ -1984,7 +1987,7 @@ bool ModoArcade::init()
     int x2 = Player2["x"].asInt();
     int y2 = Player2["y"].asInt();
     _player2 = p2.getPlayer();
-    _player2 = Sprite::create("tank3.png");
+    _player2 = Sprite::create(felipao);
     _player2->setPosition(ccp(x2,y2));
     _player2->setScale(0.3);
     tileMap->addChild(_player2,1);

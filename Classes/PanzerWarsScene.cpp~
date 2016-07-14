@@ -53,7 +53,7 @@ bool PanzerWars::init()
     button->preloadEffect("Audio/Button.mp3");
 
     //Se agrega una etiqueta con el titulo    
-    auto label = Label::createWithTTF("Panzer Wars", "fonts/Marker Felt.ttf", 26);
+    auto label = Label::createWithTTF("Panzer Wars", "fonts/Marker Felt.ttf", 48);
     label->setPosition(Vec2(origin.x + visibleSize.width/2,
                             origin.y + visibleSize.height - label->getContentSize().height));
     this->addChild(label, 1);
@@ -75,7 +75,7 @@ void PanzerWars::createMenu(Size visibleSize)
 {
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     // set the font for menu with text
-    MenuItemFont::setFontSize(20);
+    MenuItemFont::setFontSize(45);
 
     // create first menu item
 //    auto mbVs = MenuItemFont::create("Modo vs.", CC_CALLBACK_1(PanzerWars::ModoVsCallBack, this));
@@ -83,13 +83,13 @@ void PanzerWars::createMenu(Size visibleSize)
 
     // create second menu item
     auto mbArcade = MenuItemFont::create("Jugar", CC_CALLBACK_1(PanzerWars::ModoArcadeCallBack, this));
-    mbArcade->setFontSize(28);
+    //mbArcade->setFontSize(48);
     // create third menu item
     auto mbCreditos = MenuItemFont::create("Créditos", CC_CALLBACK_1(PanzerWars::CreditosCallBack,this));
-
+    //mbCreditos->setFontSize(36);
     // now create a menu with menu items.
     auto menuCenter = Menu::create(mbArcade,mbCreditos, NULL);
-
+    
     // set the position of menu
     menuCenter->setPosition(Vec2(visibleSize.width/2.0, visibleSize.height/2.0));
 

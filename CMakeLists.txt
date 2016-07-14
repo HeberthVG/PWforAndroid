@@ -130,6 +130,7 @@ set(GAME_SRC
   Classes/CreditosScene.cpp
   Classes/KOTHScene.cpp
   Classes/Player.cpp  
+  Classes/TankScene.cpp
   ${COCOS2D_ROOT}/cocos/2d/CCTMXLayer.cpp
   ${COCOS2D_ROOT}/cocos/2d/CCTMXTiledMap.cpp
   ${PLATFORM_SPECIFIC_SRC}
@@ -142,6 +143,7 @@ set(GAME_HEADERS
   Classes/CreditosScene.h
   Classes/KOTHScene.h
   Classes/Player.h
+  Classes/TankScene.h
   ${COCOS2D_ROOT}/cocos/2d/CCTMXLayer.h
   ${COCOS2D_ROOT}/cocos/2d/CCTMXTiledMap.h
   ${PLATFORM_SPECIFIC_HEADERS}

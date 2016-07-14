@@ -1,5 +1,5 @@
 #include "PanzerWarsScene.h"
-#include "ModoArcadeScene.h"
+#include "TankScene.h"
 #include "CreditosScene.h"
 #include "SimpleAudioEngine.h"
 
@@ -135,7 +135,7 @@ void PanzerWars::ModoArcadeCallBack(Ref* pSender)
 {
     CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("Audio/Button.mp3");
     CocosDenshion::SimpleAudioEngine::getInstance()->stopBackgroundMusic(true);
-    Director::sharedDirector()->replaceScene(ModoArcade::createScene());
+    Director::sharedDirector()->replaceScene(Tank::createScene());
 }
 
 // Se presiona creditos
