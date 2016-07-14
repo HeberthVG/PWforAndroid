@@ -6,6 +6,7 @@
 #include <CCTMXLayer.h>
 #include <CCTMXTiledMap.h>
 #include <CCTMXObjectGroup.h>
+#include <CCDevice.h>
 #include <CCScene.h>
 #include <chrono>
 #include <ctime>
@@ -26,10 +27,14 @@ public:
 
     //Inicio atributos de jugadores: salud, defensa...
     void initPlayerStatus();
+    //para acelerometro
+    virtual void onAcceleration(Acceleration* acc, Event* event); 
 
     //Cosas para los fondos y sprites
     void onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event);
     void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event);
+    bool onTouchBegan(cocos2d::Touch *touch, cocos2d::Event *event);
+    void onTouchEnded(cocos2d::Touch *touch, cocos2d::Event *event);
     void setPlayer1Position(Point position);
     void setPlayer2Position(Point position);
     void setEnemy1Position(Point position);
@@ -68,12 +73,12 @@ private:
     Vec2 origin;
     bool pause = false, exp = false, firstSpeed = false, firstHP = false, firstAttack = false,
     firstDefence = false, hitP1= false, hitP2 = false,hitE2 = false,hitE1 = false, hpup1 = false, hpup2 = false, game_Over = false;
-    bool e1Collision = false, e2Collision=false;
+    bool e1Collision = false, e2Collision=false, powerUp = false;
     Sprite *_player1, *_player2,*_enemy1,*_enemy2, *sprite, *minaP1[3], *minaP2[3],*minaE1[3],*minaE2[3], *misil1, *misil2,*misil3,*misil4, *HB1, *HB2,*HB3, *explode,
     *attackUp, *speedUp, *defenceUp, *HpUp;
     CCTMXTiledMap *tileMap;
     CCTMXLayer *background;
-    bool up1 = false, down1 = false, right1 = false, left1 = false; //Para control del player 1
+    bool up1 = false, down1 = false, right1 = false, left1 = false, Up_left1=false, Up_right1=false, Down_left1=false, Down_right1=false ; //Para control del player 1
     bool up2 = false, down2 = false, right2 = false, left2 = false; //Para control del player 2
     Rect bbP1, bbP2,bbE1,bbE2, bbM1[3], bbM2[3], bbM3[3], bbM4[3], bbm1, bbm2,bbmE1,bbmE2, bbspeedUp; //Para las colisiones con las minas
     int cantM1 = 5, cantM2 = 5,cantM4 = 5; //Cantidad inicial de minas
