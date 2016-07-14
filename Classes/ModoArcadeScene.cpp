@@ -414,6 +414,10 @@ void ModoArcade::gameUpdate(float interval)
 	    setPlayer2Position(ccp(--loc2.x-p2.getSpeed(),loc2.y)); // player 2 going left
 	}
     }
+    if(fire){
+
+      dispararMisilPlayer1();
+    }
 
 //MOVIMIENTO DE ENEMIGOS
 if(e1.getHealth()) { //Si esta muerto no hace nada
@@ -1177,6 +1181,111 @@ if(!e2Collision) { //Solo se mueve si no hay colision
 
     }
 ///-----------------------------------------------------
+if(actm5)  {
+  locm5 = misil5->getPosition();
+  bbm5 = misil5->getBoundingBox();
+  switch (dirm5)
+  {
+    case 0:
+        setMisil5Position(ccp(locm5.x,++locm5.y+3));
+        break;
+    case 1:
+        setMisil5Position(ccp(locm5.x,--locm5.y-3));
+        break;
+    case 2:
+        setMisil5Position(ccp(--locm5.x-3,locm5.y));
+        break;
+    case 3:
+        setMisil5Position(ccp(++locm5.x+3,locm5.y));
+        break;
+    case 4:
+        setMisil5Position(ccp(++locm5.x+3,++locm5.y+3));
+        break;
+    case 5:
+        setMisil5Position(ccp(++locm5.x+3,--locm5.y-3));
+        break;
+    case 6:
+        setMisil5Position(ccp(--locm5.x-3,--locm5.y-3));
+        break;
+    case 7:
+        setMisil5Position(ccp(--locm5.x-3,++locm5.y+3));
+    }
+// if(bbm5.intersectsRect(bbE1))
+// {
+//   tileMap->removeChild(misil5);
+//   actm5 = false;
+//   e1.setHealth(p1.getHealth()-20);
+//   if(e1.getHealth()<0)
+//   e1.setHealth(0);
+// }
+
+
+if(bbm5.intersectsRect(bbE1))
+{
+  explosion(misil5);
+  delta = std::chrono::duration<double, std::milli>(high_resolution_clock::now()-start).count();
+  end += delta;
+  if (end > 5) {
+      tileMap->removeChild(misil5);
+      end = 0;
+  }
+  actm5 = false;
+  e1.setHealth(e1.getHealth()-20);
+  hitP1 = true;
+  if(e1.getHealth()<0)
+  e1.setHealth(0);
+}
+
+if(bbm5.intersectsRect(bbE2))
+{
+  explosion(misil5);
+  delta = std::chrono::duration<double, std::milli>(high_resolution_clock::now()-start).count();
+  end += delta;
+  if (end > 5) {
+      tileMap->removeChild(misil1);
+      end = 0;
+  }
+  actm5 = false;
+  e2.setHealth(e2.getHealth()-50);
+  hitP1 = true;
+  if(e2.getHealth()<0)
+  e2.setHealth(0);
+}
+for(i=0; i<3; i++) {
+    if((actM2[i]) && bbm5.intersectsRect(bbM2[i])) {
+  explosion(misil5);
+  explosion(minaP2[i]);
+  delta = std::chrono::duration<double, std::milli>(high_resolution_clock::now()-start).count();
+  end += delta;
+  if (end > 5) {
+      tileMap->removeChild(misil5);
+      tileMap->removeChild(minaP2[i]);
+      end = 0;
+  }
+  actm5 = false;
+  actM2[i] = false;
+    }
+}
+for(i=0; i<3; i++) {
+    if((actM4[i]) && bbm5.intersectsRect(bbM4[i])) {
+  explosion(misil5);
+  explosion(minaE2[i]);
+  delta = std::chrono::duration<double, std::milli>(high_resolution_clock::now()-start).count();
+  end += delta;
+  if (end > 5) {
+      tileMap->removeChild(misil5);
+      tileMap->removeChild(minaE2[i]);
+      end = 0;
+  }
+  actm5 = false;
+  actM4[i] = false;
+    }
+}
+
+  }
+
+
+
   if(actmE1)  {
     locmE1 = misil3->getPosition();
     bbmE1 = misil3->getBoundingBox();
@@ -1351,12 +1460,19 @@ if(!e2Collision) { //Solo se mueve si no hay colision
 }
 bool ModoArcade::onTouchBegan(Touch *touch, Event *event)
 {
+  if(touch->getLocation().x > 920  && touch->getLocation().y   < 200  )
+  {
+   fire = true;
+   //player->move(0); // param '0' for left
+  }
+
+
  if(touch->getLocation().x <= loc1.x&& abs(touch->getLocation().y - loc1.y)<100)
  {
   left1 = true;
   //player->move(0); // param '0' for left
  }
- if(touch->getLocation().x > loc1.x&& abs(touch->getLocation().y - loc1.y)<100)
+ if(touch->getLocation().x > loc1.x&& abs(touch->getLocation().y - loc1.y)<100 &&(touch->getLocation().x < 920))
  {
   right1 = true;
   //player->move(1); // param '0' for right
@@ -1385,7 +1501,7 @@ bool ModoArcade::onTouchBegan(Touch *touch, Event *event)
    Down_left1 = true;
    //player->move(0); // param '0' for left
   }
-  if((touch->getLocation().x - loc1.x)>100 && (loc1.y-touch->getLocation().y )>100)
+  if((touch->getLocation().x - loc1.x)>100 && (loc1.y-touch->getLocation().y )>100  && (touch->getLocation().x < 920) && (touch->getLocation().y   > 200 )  )
   {
    Down_right1 = true;
    //player->move(1); // param '0' for right
@@ -1408,8 +1524,9 @@ void ModoArcade::onTouchEnded(Touch *touch, Event *event)
  Down_right1=false;
  Up_left1=false;
  Down_left1=false;
-
+fire= false;
 }
+
 
 
 
@@ -1711,6 +1828,72 @@ void ModoArcade::setMisil2Position(Point position)
     misil2->setPosition(position);
 }
 //------------------------------------------
+//Misil Player
+
+void ModoArcade::dispararMisilPlayer1(){
+   if(actm5==false && !pause) {
+    audioAA->playEffect("Audio/explosion3.mp3");
+    audioAA->setEffectsVolume(0.3);
+    misil5 = Sprite::create("c1.png");
+misil5->setPosition(_player1->getPosition());
+misil5->setScale(0.4);
+tileMap->addChild(misil5, _player1->getZOrder());
+actm5 = true;
+dirm5 = dirAnt1;
+switch (dirm5) {
+  case 0:
+    misil5->runAction(RotateBy::create(0.001, -90));
+    break;
+  case 1:
+    misil5->runAction(RotateBy::create(0.001, 90));
+    break;
+  case 2:
+    misil5->runAction(RotateBy::create(0.001, 180));
+    break;
+  case 3:
+    misil5->runAction(RotateBy::create(0.001, -0));
+    break;
+  case 4:
+    misil5->runAction(RotateBy::create(0.001, -45));
+    break;
+  case 5:
+    misil5->runAction(RotateBy::create(0.001, 45));
+    break;
+  case 6:
+    misil5->runAction(RotateBy::create(0.001, 135));
+    break;
+  case 7:
+    misil5->runAction(RotateBy::create(0.001, -135));
+    break;
+default:
+        break;
+      }
+  }
+}
+
+void ModoArcade::setMisil5Position(Point position)
+{
+    Point tileCoord = this->tileCoordForPosition(position);
+    int tileGid = _blockage->getTileGIDAt(tileCoord);
+    if (tileGid) {
+        auto properties = tileMap->getPropertiesForGID(tileGid).asValueMap();
+        if (!properties.empty()) {
+            auto collision = properties["Collision"].asString();
+            if ("True" == collision) {
+		tileMap->removeChild(misil5);
+		actm5 = false;
+		log("COLISION");
+                return;
+            }
+        }else return;
+    }
+    misil5->setPosition(position);
+}
+
+
+
+
+
 ///MISIL enemigo
 void ModoArcade::dispararMisilENemigo1(){
   if(actmE1==false && !pause) {
@@ -2018,6 +2201,13 @@ bool ModoArcade::init()
 
 
 
+    auto _fire = Sprite::create("b.png");
+    _fire->setPosition(ccp(970,50));
+    _fire->setScale(0.08);
+    // _fire->setRotation(-90);
+     tileMap->addChild(_fire,1);
+
+
     //Se crea sprite health bar de player 1
     HB1 = Sprite::create("healthBar.png");
     HB1->setPosition(ccp(x,y+40));
@@ -2059,7 +2249,7 @@ bool ModoArcade::init()
     attackUp->setScale(0.3);
     attackUp->setTag(4);
     addChild(attackUp);
-  
+
    //seccion de movimiento
    auto eventListener = EventListenerKeyboard::create();
    eventListener->onKeyPressed = CC_CALLBACK_2(ModoArcade::onKeyPressed, this);
@@ -2155,7 +2345,7 @@ void ModoArcade::onAcceleration(Acceleration *acc, Event *event)
 	e1.setHealth(0);
         powerUp = false;
     }
-     
+
     // position the sprite exactly as how much device accelerated
     //setPlayer1Position(Point(percentX * s.width, percentY * s.height));
 }
