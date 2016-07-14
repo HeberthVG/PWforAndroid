@@ -36,7 +36,7 @@ bool Tank::init()
     Tank::createButtons(visibleSize);
 
     //Se agrega una etiqueta con el titulo    
-    auto label = Label::createWithTTF("Select Tank", "fonts/Marker Felt.ttf", 26);
+    auto label = Label::createWithTTF("Seleccione un tanque", "fonts/Marker Felt.ttf", 36);
     label->setPosition(Vec2(origin.x + visibleSize.width/2,
                             origin.y + visibleSize.height - label->getContentSize().height));
     this->addChild(label, 1);
