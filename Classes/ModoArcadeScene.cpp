@@ -2333,10 +2333,15 @@ srand (time(NULL));
 int ramdom;
 ramdom= rand() % 10;
 //
-// if(ramdom<2 && e3.getHealth()){
+if(ramdom<2 && e3.getHealth()){
 //
 //   dispararMisilENemigo3();
-// }
+  dispararMisilENemigo4();
+  dispararMisilENemigo5();
+  dispararMisilENemigo6();
+  dispararMisilENemigo7();
+
+ }
 
 
 // switch (ramdom) {
@@ -2357,9 +2362,9 @@ ramdom= rand() % 10;
     bbE2= _enemy2->getBoundingBox();
     bbE3= _enemy3->getBoundingBox();
      bbE4= _enemy4->getBoundingBox();
-    // bbE5= _enemy5->getBoundingBox();
-    // bbE6= _enemy6->getBoundingBox();
-    // bbE7= _enemy7->getBoundingBox();
+    bbE5= _enemy5->getBoundingBox();
+    bbE6= _enemy6->getBoundingBox();
+    bbE7= _enemy7->getBoundingBox();
     // bbE8= _enemy8->getBoundingBox();
 
 
@@ -2821,6 +2826,169 @@ for(i=0; i<3; i++) {
           p1.setHealth(0);
         }
           }
+//-----------------------------------------------------------------------------------
+
+if(actmE4)  {
+  locmE4 = misil7->getPosition();
+  bbmE4 = misil7->getBoundingBox();
+     switch (dirmE4)
+    {
+      case 0:
+          setMisil7Position(ccp(locmE4.x,++locmE4.y+3));
+          break;
+      case 1:
+          setMisil7Position(ccp(locmE4.x,--locmE4.y-3));
+          break;
+      case 2:
+          setMisil7Position(ccp(--locmE4.x-3,locmE4.y));
+          break;
+      case 3:
+          setMisil7Position(ccp(++locmE4.x+3,locmE4.y));
+          break;
+      case 4:
+          setMisil7Position(ccp(++locmE4.x+3,++locmE4.y+3));
+          break;
+      case 5:
+          setMisil7Position(ccp(++locmE4.x+3,--locmE4.y-3));
+          break;
+      case 6:
+          setMisil7Position(ccp(--locmE4.x-3,--locmE4.y-3));
+          break;
+      case 7:
+          setMisil7Position(ccp(--locmE4.x-3,++locmE4.y+3));
+     }
+if(bbmE4.intersectsRect(bbP1))
+{
+  tileMap->removeChild(misil7);
+  actmE4 = false;
+  p1.setHealth(p1.getHealth()-20);
+  if(p1.getHealth()<0)
+  p1.setHealth(0);
+}
+  }
+
+  //e5
+  if(actmE5)  {
+    locmE5 = misil8->getPosition();
+    bbmE5 = misil8->getBoundingBox();
+       switch (dirmE5)
+      {
+        case 0:
+            setMisil8Position(ccp(locmE5.x,++locmE5.y+3));
+            break;
+        case 1:
+            setMisil8Position(ccp(locmE5.x,--locmE5.y-3));
+            break;
+        case 2:
+            setMisil8Position(ccp(--locmE5.x-3,locmE5.y));
+            break;
+        case 3:
+            setMisil8Position(ccp(++locmE5.x+3,locmE5.y));
+            break;
+        case 4:
+            setMisil8Position(ccp(++locmE5.x+3,++locmE5.y+3));
+            break;
+        case 5:
+            setMisil8Position(ccp(++locmE5.x+3,--locmE5.y-3));
+            break;
+        case 6:
+            setMisil8Position(ccp(--locmE5.x-3,--locmE5.y-3));
+            break;
+        case 7:
+            setMisil8Position(ccp(--locmE5.x-3,++locmE5.y+3));
+       }
+  if(bbmE5.intersectsRect(bbP1))
+  {
+    tileMap->removeChild(misil8);
+    actmE5 = false;
+    p1.setHealth(p1.getHealth()-20);
+    if(p1.getHealth()<0)
+    p1.setHealth(0);
+  }
+    }
+
+
+  //e6
+
+  if(actmE6)  {
+    locmE6 = misil9->getPosition();
+    bbmE6 = misil9->getBoundingBox();
+       switch (dirmE6)
+      {
+        case 0:
+            setMisil9Position(ccp(locmE6.x,++locmE6.y+3));
+            break;
+        case 1:
+            setMisil9Position(ccp(locmE6.x,--locmE6.y-3));
+            break;
+        case 2:
+            setMisil9Position(ccp(--locmE6.x-3,locmE6.y));
+            break;
+        case 3:
+            setMisil9Position(ccp(++locmE6.x+3,locmE6.y));
+            break;
+        case 4:
+            setMisil9Position(ccp(++locmE6.x+3,++locmE6.y+3));
+            break;
+        case 5:
+            setMisil9Position(ccp(++locmE6.x+3,--locmE6.y-3));
+            break;
+        case 6:
+            setMisil9Position(ccp(--locmE6.x-3,--locmE6.y-3));
+            break;
+        case 7:
+            setMisil9Position(ccp(--locmE6.x-3,++locmE6.y+3));
+       }
+  if(bbmE6.intersectsRect(bbP1))
+  {
+    tileMap->removeChild(misil9);
+    actmE6 = false;
+    p1.setHealth(p1.getHealth()-20);
+    if(p1.getHealth()<0)
+    p1.setHealth(0);
+  }
+    }
+
+
+  //e7
+  if(actmE7)  {
+    locmE7 = misil10->getPosition();
+    bbmE7 = misil10->getBoundingBox();
+       switch (dirmE7)
+      {
+        case 0:
+            setMisil10Position(ccp(locmE7.x,++locmE7.y+3));
+            break;
+        case 1:
+            setMisil10Position(ccp(locmE7.x,--locmE7.y-3));
+            break;
+        case 2:
+            setMisil10Position(ccp(--locmE7.x-3,locmE7.y));
+            break;
+        case 3:
+            setMisil10Position(ccp(++locmE7.x+3,locmE7.y));
+            break;
+        case 4:
+            setMisil10Position(ccp(++locmE7.x+3,++locmE7.y+3));
+            break;
+        case 5:
+            setMisil10Position(ccp(++locmE7.x+3,--locmE7.y-3));
+            break;
+        case 6:
+            setMisil10Position(ccp(--locmE7.x-3,--locmE7.y-3));
+            break;
+        case 7:
+            setMisil10Position(ccp(--locmE7.x-3,++locmE7.y+3));
+       }
+  if(bbmE7.intersectsRect(bbP1))
+  {
+    tileMap->removeChild(misil10);
+    actmE7 = false;
+    p1.setHealth(p1.getHealth()-20);
+    if(p1.getHealth()<0)
+    p1.setHealth(0);
+  }
+    }
 
 
 //------------------------------------------------------------
@@ -3680,11 +3848,252 @@ void ModoArcade::setMisil6Position(Point position)
     misil6->setPosition(position);
 }
 
+//disparo e4
+//-------------------------------------------------------
+void ModoArcade::dispararMisilENemigo4(){
+  if(actmE4==false && !pause) {
+    audioAA->playEffect("Audio/explosion3.mp3");
+    audioAA->setEffectsVolume(0.3);
+    misil7 = Sprite::create("c1.png");
+misil7->setPosition(_enemy4->getPosition());
+misil7->setScale(0.4);
+tileMap->addChild(misil7, _enemy4->getZOrder());
+actmE4 = true;
+dirmE4 = dirAntE4;
+switch (dirmE4) {
+  case 0:
+    misil7->runAction(RotateBy::create(0.001, -90));
+    break;
+  case 1:
+    misil7->runAction(RotateBy::create(0.001, 90));
+    break;
+  case 2:
+    misil7->runAction(RotateBy::create(0.001, 180));
+    break;
+  case 3:
+    misil7->runAction(RotateBy::create(0.001, -0));
+    break;
+  case 4:
+    misil7->runAction(RotateBy::create(0.001, -45));
+    break;
+  case 5:
+    misil7->runAction(RotateBy::create(0.001, 45));
+    break;
+  case 6:
+    misil7->runAction(RotateBy::create(0.001, 135));
+    break;
+  case 7:
+    misil7->runAction(RotateBy::create(0.001, -135));
+    break;
+default:
+        break;
+      }
+  }
+}
 
+void ModoArcade::setMisil7Position(Point position)
+{
+    Point tileCoord = this->tileCoordForPosition(position);
+    int tileGid = _blockage->getTileGIDAt(tileCoord);
+    if (tileGid) {
+        auto properties = tileMap->getPropertiesForGID(tileGid).asValueMap();
+        if (!properties.empty()) {
+            auto collision = properties["Collision"].asString();
+            if ("True" == collision) {
+		tileMap->removeChild(misil7);
+		actmE4 = false;
+		log("COLISION");
+                return;
+            }
+        }else return;
+    }
+    misil7->setPosition(position);
+}
 
+//disparo e5
+//---------------------------------------------------------------------------------
+void ModoArcade::dispararMisilENemigo5(){
+  if(actmE5==false && !pause) {
+    audioAA->playEffect("Audio/explosion3.mp3");
+    audioAA->setEffectsVolume(0.3);
+    misil8 = Sprite::create("c1.png");
+misil8->setPosition(_enemy5->getPosition());
+misil8->setScale(0.4);
+tileMap->addChild(misil8, _enemy5->getZOrder());
+actmE5 = true;
+dirmE5 = dirAntE5;
+switch (dirmE5) {
+  case 0:
+    misil8->runAction(RotateBy::create(0.001, -90));
+    break;
+  case 1:
+    misil8->runAction(RotateBy::create(0.001, 90));
+    break;
+  case 2:
+    misil8->runAction(RotateBy::create(0.001, 180));
+    break;
+  case 3:
+    misil8->runAction(RotateBy::create(0.001, -0));
+    break;
+  case 4:
+    misil8->runAction(RotateBy::create(0.001, -45));
+    break;
+  case 5:
+    misil8->runAction(RotateBy::create(0.001, 45));
+    break;
+  case 6:
+    misil8->runAction(RotateBy::create(0.001, 135));
+    break;
+  case 7:
+    misil8->runAction(RotateBy::create(0.001, -135));
+    break;
+default:
+        break;
+      }
+  }
+}
 
+void ModoArcade::setMisil8Position(Point position)
+{
+    Point tileCoord = this->tileCoordForPosition(position);
+    int tileGid = _blockage->getTileGIDAt(tileCoord);
+    if (tileGid) {
+        auto properties = tileMap->getPropertiesForGID(tileGid).asValueMap();
+        if (!properties.empty()) {
+            auto collision = properties["Collision"].asString();
+            if ("True" == collision) {
+		tileMap->removeChild(misil8);
+		actmE5 = false;
+		log("COLISION");
+                return;
+            }
+        }else return;
+    }
+    misil8->setPosition(position);
+}
 
+//disparar e6
+//----------------------------------
+void ModoArcade::dispararMisilENemigo6(){
+  if(actmE6==false && !pause) {
+    audioAA->playEffect("Audio/explosion3.mp3");
+    audioAA->setEffectsVolume(0.3);
+    misil9 = Sprite::create("c1.png");
+misil9->setPosition(_enemy6->getPosition());
+misil9->setScale(0.4);
+tileMap->addChild(misil9, _enemy6->getZOrder());
+actmE6 = true;
+dirmE6 = dirAntE6;
+switch (dirmE6) {
+  case 0:
+    misil9->runAction(RotateBy::create(0.001, -90));
+    break;
+  case 1:
+    misil9->runAction(RotateBy::create(0.001, 90));
+    break;
+  case 2:
+    misil9->runAction(RotateBy::create(0.001, 180));
+    break;
+  case 3:
+    misil9->runAction(RotateBy::create(0.001, -0));
+    break;
+  case 4:
+    misil9->runAction(RotateBy::create(0.001, -45));
+    break;
+  case 5:
+    misil9->runAction(RotateBy::create(0.001, 45));
+    break;
+  case 6:
+    misil9->runAction(RotateBy::create(0.001, 135));
+    break;
+  case 7:
+    misil9->runAction(RotateBy::create(0.001, -135));
+    break;
+default:
+        break;
+      }
+  }
+}
 
+void ModoArcade::setMisil9Position(Point position)
+{
+    Point tileCoord = this->tileCoordForPosition(position);
+    int tileGid = _blockage->getTileGIDAt(tileCoord);
+    if (tileGid) {
+        auto properties = tileMap->getPropertiesForGID(tileGid).asValueMap();
+        if (!properties.empty()) {
+            auto collision = properties["Collision"].asString();
+            if ("True" == collision) {
+		tileMap->removeChild(misil9);
+		actmE6 = false;
+		log("COLISION");
+                return;
+            }
+        }else return;
+    }
+    misil9->setPosition(position);
+}
+//disparo e7
+//-------------------------------------
+void ModoArcade::dispararMisilENemigo7(){
+  if(actmE7==false && !pause) {
+    audioAA->playEffect("Audio/explosion3.mp3");
+    audioAA->setEffectsVolume(0.3);
+    misil10 = Sprite::create("c1.png");
+misil10->setPosition(_enemy7->getPosition());
+misil10->setScale(0.4);
+tileMap->addChild(misil10, _enemy7->getZOrder());
+actmE7 = true;
+dirmE7 = dirAntE7;
+switch (dirmE7) {
+  case 0:
+    misil10->runAction(RotateBy::create(0.001, -90));
+    break;
+  case 1:
+    misil10->runAction(RotateBy::create(0.001, 90));
+    break;
+  case 2:
+    misil10->runAction(RotateBy::create(0.001, 180));
+    break;
+  case 3:
+    misil10->runAction(RotateBy::create(0.001, -0));
+    break;
+  case 4:
+    misil10->runAction(RotateBy::create(0.001, -45));
+    break;
+  case 5:
+    misil10->runAction(RotateBy::create(0.001, 45));
+    break;
+  case 6:
+    misil10->runAction(RotateBy::create(0.001, 135));
+    break;
+  case 7:
+    misil10->runAction(RotateBy::create(0.001, -135));
+    break;
+default:
+        break;
+      }
+  }
+}
+
+void ModoArcade::setMisil10Position(Point position)
+{
+    Point tileCoord = this->tileCoordForPosition(position);
+    int tileGid = _blockage->getTileGIDAt(tileCoord);
+    if (tileGid) {
+        auto properties = tileMap->getPropertiesForGID(tileGid).asValueMap();
+        if (!properties.empty()) {
+            auto collision = properties["Collision"].asString();
+            if ("True" == collision) {
+		tileMap->removeChild(misil10);
+		actmE7 = false;
+		log("COLISION");
+                return;
+            }
+        }else return;
+    }
+    misil10->setPosition(position);
+}
 
 
 
