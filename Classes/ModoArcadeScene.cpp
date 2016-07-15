@@ -2065,7 +2065,269 @@ if(!e6Collision) { //Solo se mueve si no hay colision
 }
 //movimiento enemigo 7
 //-------------------------------------------------------------
+if(e7.getHealth()){ //Si esta muerto no hace nada
+if(!e7Collision) { //Solo se mueve si no hay colision
+  if((abs(loc1.x-loc9.x)<20) &&((loc1.y-loc9.y)>20 )){//0
+    switch (dirAntE7) {
+      case 0:
+        break;
+      case 1:
+        this->_enemy7->runAction(RotateBy::create(0.00002, 180));
+        break;
+      case 2:
+        this->_enemy7->runAction(RotateBy::create(0.0000001, 90));
+        break;
+      case 3:
+        this->_enemy7->runAction(RotateBy::create(0.0000001, -90));
+        break;
+      case 4:
+        this->_enemy7->runAction(RotateBy::create(0.0000005, -45));
+        break;
+      case 5:
+        this->_enemy7->runAction(RotateBy::create(0.000000015, -135));
+        break;
+      case 6:
+        this->_enemy7->runAction(RotateBy::create(0.0000000015, 135));
+        break;
+      case 7:
+        this->_enemy7->runAction(RotateBy::create(0.00000000005, 45));
+        break;
+      }
+    dirAntE7 = 0;
+    setEnemy7Position(ccp(loc9.x,++loc9.y+e1.getSpeed())); // enemy7 going up
+    log("0");
+          }
+  if((abs(loc1.x-loc9.x)<20) &&((loc9.y-loc1.y)>20 )){//1
+    switch (dirAntE7) {
+      case 0:
+        this->_enemy7->runAction(RotateBy::create(0.02, 180));
+        break;
+      case 1:
+        break;
+      case 2:
+        this->_enemy7->runAction(RotateBy::create(0.01, -90));
+        break;
+      case 3:
+        this->_enemy7->runAction(RotateBy::create(0.01, 90));
+        break;
+      case 4:
+        this->_enemy7->runAction(RotateBy::create(0.015, 135));
+        break;
+      case 5:
+        this->_enemy7->runAction(RotateBy::create(0.005, 45));
+        break;
+      case 6:
+        this->_enemy7->runAction(RotateBy::create(0.005, -45));
+        break;
+      case 7:
+        this->_enemy7->runAction(RotateBy::create(0.015, -135));
+        break;
+      }
+    log("1");
+    dirAntE7 = 1;
+  //  dispararMisilENemigo();
+    setEnemy7Position(ccp(loc9.x,--loc9.y)); // enemy7 going down
+    //KOTHCounter3(_enemy7->getPosition());
+  }
+  //
+  if(((loc9.x-loc1.x)>20) &&(abs(loc1.y-loc9.y)<20) ){//2
+    switch (dirAntE7) {
+      case 0:
+        this->_enemy7->runAction(RotateBy::create(0.01, -90));
+        break;
+      case 1:
+        this->_enemy7->runAction(RotateBy::create(0.01, 90));
+        break;
+      case 2:
+        break;
+      case 3:
+        this->_enemy7->runAction(RotateBy::create(0.02, 180));
+        break;
+      case 4:
+        this->_enemy7->runAction(RotateBy::create(0.015, -135));
+        break;
+      case 5:
+        this->_enemy7->runAction(RotateBy::create(0.015, 135));
+        break;
+      case 6:
+        this->_enemy7->runAction(RotateBy::create(0.005, 45));
+        break;
+      case 7:
+        this->_enemy7->runAction(RotateBy::create(0.005, -45));
+        break;
+      }
+    log("2");
+    dirAntE7 = 2;
+    //dispararMisilENemigo();
+    setEnemy7Position(ccp(--loc9.x,loc9.y)); // enemy7 going left
+    //KOTHCounter3(_enemy7->getPosition());
+    //  dispararMisilENemigo();
+  }
+  //
+  if(((loc1.x-loc9.x)>20) &&(abs(loc1.y-loc9.y)<20) ){//3
+    switch (dirAntE7) {
+      case 0:
+        this->_enemy7->runAction(RotateBy::create(0.01, 90));
+        break;
+      case 1:
+        this->_enemy7->runAction(RotateBy::create(0.01, -90));
+        break;
+      case 2:
+        this->_enemy7->runAction(RotateBy::create(0.02, 180));
+        break;
+      case 3:
+        break;
+      case 4:
+        this->_enemy7->runAction(RotateBy::create(0.005, 45));
+        break;
+      case 5:
+        this->_enemy7->runAction(RotateBy::create(0.005, -45));
+        break;
+      case 6:
+        this->_enemy7->runAction(RotateBy::create(0.015, -135));
+        break;
+      case 7:
+        this->_enemy7->runAction(RotateBy::create(0.015, 135));
+        break;
+      }
+    dirAntE7 = 3;
+    log("3");
+    //dispararMisilENemigo();
+    setEnemy7Position(ccp(++loc9.x,loc9.y)); // enemy7 going right
+    //KOTHCounter3(_enemy7->getPosition());
+  }
+  //
+  if(((loc1.x-loc9.x)>20) && ((loc1.y-loc9.y)>20)){ //4
+    switch (dirAntE7) {
+      case 0:
+        this->_enemy7->runAction(RotateBy::create(0.005, 45));
+        break;
+      case 1:
+        this->_enemy7->runAction(RotateBy::create(0.015, -135));
+        break;
+      case 2:
+        this->_enemy7->runAction(RotateBy::create(0.015, 135));
+        break;
+      case 3:
+        this->_enemy7->runAction(RotateBy::create(0.005, -45));
+        break;
+      case 4:
+        break;
+      case 5:
+        this->_enemy7->runAction(RotateBy::create(0.01, -90));
+        break;
+      case 6:
+        this->_enemy7->runAction(RotateBy::create(0.02, 180));
+        break;
+      case 7:
+        this->_enemy7->runAction(RotateBy::create(0.01, 90));
+        break;
+      }
+    log("4");
+    dirAntE7 = 4;
+    //dispararMisilENemigo();
+    setEnemy7Position(ccp((++loc9.x),(++loc9.y)));// enemy 1 going up and right
+  }
+  //
+  if(((loc1.x-loc9.x)>20) && ((loc9.y-loc1.y)>20)){ //5
+    switch (dirAntE7) {
+      case 0:
+        this->_enemy7->runAction(RotateBy::create(0.015, 135));
+        break;
+      case 1:
+        this->_enemy7->runAction(RotateBy::create(0.005, -45));
+        break;
+      case 2:
+        this->_enemy7->runAction(RotateBy::create(0.015, -135));
+        break;
+      case 3:
+        this->_enemy7->runAction(RotateBy::create(0.005, 45));
+        break;
+      case 4:
+        this->_enemy7->runAction(RotateBy::create(0.01, 90));
+        break;
+      case 5:
+        break;
+      case 6:
+        this->_enemy7->runAction(RotateBy::create(0.01, -90));
+        break;
+      case 7:
+        this->_enemy7->runAction(RotateBy::create(0.02, 180));
+        break;
+      }
+    log("5");
+    dirAntE7 = 5;
+    setEnemy7Position(ccp((++loc9.x),(--loc9.y))); //enemy7 going down and right
+    //dispararMisilENemigo();
 
+  }
+  //
+  if(((loc9.x-loc1.x)>20) && ((loc9.y-loc1.y)>20)){//6
+    switch (dirAntE7) {
+      case 0:
+        this->_enemy7->runAction(RotateBy::create(0.015, -135));
+        break;
+      case 1:
+        this->_enemy7->runAction(RotateBy::create(0.005, 45));
+        break;
+      case 2:
+        this->_enemy7->runAction(RotateBy::create(0.005, -45));
+        break;
+      case 3:
+        this->_enemy7->runAction(RotateBy::create(0.015, 135));
+        break;
+      case 4:
+        this->_enemy7->runAction(RotateBy::create(0.02, 180));
+        break;
+      case 5:
+        this->_enemy7->runAction(RotateBy::create(0.01, 90));
+        break;
+      case 6:
+        break;
+      case 7:
+        this->_enemy7->runAction(RotateBy::create(0.01, -90));
+        break;
+      }
+    log("6");
+    dirAntE7 = 6;
+    //  dispararMisilENemigo();
+    setEnemy7Position(ccp((--loc9.x),(--loc9.y))); //enemy7 going down and left
+    //dispararMisilENemigo();
+  }
+  if(((loc9.x-loc1.x)>20) && ((loc1.y-loc9.y)>20)){//7
+    switch (dirAntE7) {
+      case 0:
+        this->_enemy7->runAction(RotateBy::create(0.005, -45));
+        break;
+      case 1:
+        this->_enemy7->runAction(RotateBy::create(0.015, 135));
+        break;
+      case 2:
+        this->_enemy7->runAction(RotateBy::create(0.005, 45));
+        break;
+      case 3:
+        this->_enemy7->runAction(RotateBy::create(0.015, -135));
+        break;
+      case 4:
+        this->_enemy7->runAction(RotateBy::create(0.01, -90));
+        break;
+      case 5:
+        this->_enemy7->runAction(RotateBy::create(0.02, 180));
+        break;
+      case 6:
+        this->_enemy7->runAction(RotateBy::create(0.01, 90));
+        break;
+      case 7:
+        break;
+      }
+    log("7");
+    dirAntE7 = 7;
+    setEnemy7Position(ccp((--loc9.x),(++loc9.y)));//enemy7 going left and up
+
+  }
+}
+
+}
 
 srand (time(NULL));
 int ramdom;
