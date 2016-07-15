@@ -419,6 +419,12 @@ void ModoArcade::gameUpdate(float interval)
       dispararMisilPlayer1();
     }
 
+    if(mine){
+
+        activarMinaP1(ccp(loc1.x,loc1.y));
+
+    }
+
 //MOVIMIENTO DE ENEMIGOS
 if(e1.getHealth()) { //Si esta muerto no hace nada
 // if (!e1Collision) { //Si hay colision no se mueve
@@ -940,7 +946,7 @@ if(!e2Collision) { //Solo se mueve si no hay colision
 	    actM1[i] = false;
 	}
 
-  if(bbE1.intersectsRect(bbM1[i]) && (actM1[i]==true)) {
+  if(bbE1.intersectsRect(bbM5[i]) && (actM5[i]==true)) {
     CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("Audio/Bomb.mp3");
     //-10 a health de p2
     if(e1.getHealth()>0)
@@ -949,18 +955,18 @@ if(!e2Collision) { //Solo se mueve si no hay colision
     if(e1.getHealth()<0)
     e1.setHealth(0);
     hitP1 = true;
-    explosion(minaP1[i]);
+    explosion(minaP1b[i]);
     delta = std::chrono::duration<double, std::milli>(high_resolution_clock::now()-start).count();
     end += delta;
     if (end > 5) {
-      tileMap->removeChild(minaP1[i]);
+      tileMap->removeChild(minaP1b[i]);
       end = 0;
     }
-    actM1[i] = false;
+    actM5[i] = false;
   }
 
 
-  if(bbE2.intersectsRect(bbM1[i]) && (actM1[i]==true)) {
+  if(bbE2.intersectsRect(bbM5[i]) && (actM5[i]==true)) {
     CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("Audio/Bomb.mp3");
     //-10 a health de p2
     if(e2.getHealth()>0)
@@ -969,14 +975,14 @@ if(!e2Collision) { //Solo se mueve si no hay colision
     if(e2.getHealth()<0)
     e2.setHealth(0);
     hitP1 = true;
-    explosion(minaP1[i]);
+    explosion(minaP1b[i]);
     delta = std::chrono::duration<double, std::milli>(high_resolution_clock::now()-start).count();
     end += delta;
     if (end > 5) {
   tileMap->removeChild(minaP1[i]);
   end = 0;
     }
-    actM1[i] = false;
+    actM5[i] = false;
   }
 
 
@@ -1467,7 +1473,13 @@ bool ModoArcade::onTouchBegan(Touch *touch, Event *event)
   }
 
 
- if(touch->getLocation().x <= loc1.x&& abs(touch->getLocation().y - loc1.y)<100)
+  if(touch->getLocation().x < 150  && touch->getLocation().y   < 200  )
+  {
+   mine = true;
+   //player->move(0); // param '0' for left
+  }
+
+ if(touch->getLocation().x <= loc1.x&& abs(touch->getLocation().y - loc1.y)<100 )
  {
   left1 = true;
   //player->move(0); // param '0' for left
@@ -1525,6 +1537,7 @@ void ModoArcade::onTouchEnded(Touch *touch, Event *event)
  Up_left1=false;
  Down_left1=false;
 fire= false;
+mine=false;
 }
 
 
@@ -2032,6 +2045,26 @@ void ModoArcade::activarMinaE2(Point position){
     }
   }
 }
+
+
+
+void ModoArcade::activarMinaP1(Point position){
+  if(cantM5>0 && !pause){
+    for(i=0; i<3; i++) {
+      if(actM5[i]==false) {
+        cantM5--;
+        minaP1b[i] = Sprite::create("mina.png");
+        minaP1b[i]->setPosition(_player1->getPosition());
+        minaP1b[i]->setScale(0.4);
+        tileMap->addChild(minaP1b[i],_player1->getZOrder()-1);
+        bbM5[i] = minaP1b[i]->getBoundingBox();
+        actM5[i] = true;
+        log("Mina %d puesta",i);
+        break;
+      }
+    }
+  }
+}
 //-----------------------------------------
 void ModoArcade::getUpgrade(Sprite *upgrade)
 {
@@ -2207,6 +2240,12 @@ bool ModoArcade::init()
     // _fire->setRotation(-90);
      tileMap->addChild(_fire,1);
 
+
+     auto _bmina = Sprite::create("bmina.png");
+     _bmina->setPosition(ccp(140,50));
+     _bmina->setScale(0.545);
+     // _fire->setRotation(-90);
+      tileMap->addChild(_bmina,1);
 
     //Se crea sprite health bar de player 1
     HB1 = Sprite::create("healthBar.png");
