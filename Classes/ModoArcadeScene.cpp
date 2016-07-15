@@ -2336,10 +2336,10 @@ ramdom= rand() % 10;
 if(ramdom<2 && e3.getHealth()){
 //
 //   dispararMisilENemigo3();
-  dispararMisilENemigo4();
-  dispararMisilENemigo5();
-  dispararMisilENemigo6();
-  dispararMisilENemigo7();
+  // dispararMisilENemigo4();
+  // dispararMisilENemigo5();
+  // dispararMisilENemigo6();
+  // dispararMisilENemigo7();
 
  }
 
@@ -2669,6 +2669,79 @@ if(bbm5.intersectsRect(bbE2))
     if(e3.getHealth()<0)
     e3.setHealth(0);
   }
+//---------
+if(bbm5.intersectsRect(bbE4))
+{
+  explosion(misil5);
+  delta = std::chrono::duration<double, std::milli>(high_resolution_clock::now()-start).count();
+  end += delta;
+  if (end > 5) {
+      tileMap->removeChild(misil5);
+      end = 0;
+  }
+  actm5 = false;
+  e4.setHealth(e4.getHealth()-50);
+  hitP1 = true;
+  if(e4.getHealth()<0)
+  e4.setHealth(0);
+}
+
+//---------
+if(bbm5.intersectsRect(bbE5))
+{
+  explosion(misil5);
+  delta = std::chrono::duration<double, std::milli>(high_resolution_clock::now()-start).count();
+  end += delta;
+  if (end > 5) {
+      tileMap->removeChild(misil5);
+      end = 0;
+  }
+  actm5 = false;
+  e5.setHealth(e5.getHealth()-50);
+  hitP1 = true;
+  if(e5.getHealth()<0)
+  e5.setHealth(0);
+}
+
+
+//------------
+
+if(bbm5.intersectsRect(bbE6))
+{
+  explosion(misil5);
+  delta = std::chrono::duration<double, std::milli>(high_resolution_clock::now()-start).count();
+  end += delta;
+  if (end > 5) {
+      tileMap->removeChild(misil5);
+      end = 0;
+  }
+  actm5 = false;
+  e6.setHealth(e6.getHealth()-50);
+  hitP1 = true;
+  if(e6.getHealth()<0)
+  e6.setHealth(0);
+}
+
+//---------
+if(bbm5.intersectsRect(bbE7))
+{
+  explosion(misil5);
+  delta = std::chrono::duration<double, std::milli>(high_resolution_clock::now()-start).count();
+  end += delta;
+  if (end > 5) {
+      tileMap->removeChild(misil5);
+      end = 0;
+  }
+  actm5 = false;
+  e7.setHealth(e3.getHealth()-50);
+  hitP1 = true;
+  if(e7.getHealth()<0)
+  e7.setHealth(0);
+}
+
+//-----------
+
+
 
 for(i=0; i<3; i++) {
     if((actM2[i]) && bbm5.intersectsRect(bbM2[i])) {
@@ -3050,6 +3123,17 @@ if(bbmE4.intersectsRect(bbP1))
   if(!e3.getHealth())
 explosion2(_enemy3);
 
+if(!e4.getHealth())
+explosion2(_enemy4);
+
+if(!e5.getHealth())
+explosion2(_enemy5);
+
+if(!e6.getHealth())
+explosion2(_enemy6);
+
+if(!e7.getHealth())
+explosion2(_enemy7);
 
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -3071,7 +3155,7 @@ explosion2(_enemy3);
 	    Director::sharedDirector()->pause();
 	}
     }
-    if(!e2.getHealth() && !e1.getHealth() && !e3.getHealth()) {
+    if(!e2.getHealth() && !e1.getHealth() && !e3.getHealth()  && !e4.getHealth() && !e5.getHealth() && !e6.getHealth() && !e7.getHealth() ) {
 
       ronda2=true;
 
