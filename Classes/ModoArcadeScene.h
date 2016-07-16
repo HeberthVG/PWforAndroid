@@ -76,6 +76,15 @@ public:
 
     //Explosiones
     void explosion(Sprite *player);
+    void fade(Sprite *player);
+    void fade2(Sprite *player);
+    void fade1(Sprite *player);
+    void fade3(Sprite *player);
+    void fade4(Sprite *player);
+    void fade5(Sprite *player);
+    void fade6(Sprite *player);
+    void fade7(Sprite *player);
+
     void explosion2(Sprite *player);
     void explosion4(Sprite *player);
     // a selector callback

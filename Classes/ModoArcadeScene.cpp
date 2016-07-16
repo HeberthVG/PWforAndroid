@@ -1268,6 +1268,9 @@ if(!e3Collision) { //Solo se mueve si no hay colision
 
 //movimiento enemigo 4
 //-------------------------------------------------------------
+
+if(ronda2){
+
 if(e4.getHealth()){ //Si esta muerto no hace nada
 if(!e4Collision) { //Solo se mueve si no hay colision
   if((abs(loc1.x-loc6.x)<20) &&((loc1.y-loc6.y)>20 )){//0
@@ -1800,6 +1803,8 @@ if(!e5Collision) { //Solo se mueve si no hay colision
 
 //movimiento enemigo 6
 //--------------------------------------------------------------
+if(ronda3){
+
 if(e6.getHealth()){ //Si esta muerto no hace nada
 if(!e6Collision) { //Solo se mueve si no hay colision
   if((abs(loc1.x-loc8.x)<20) &&((loc1.y-loc8.y)>20 )){//0
@@ -2329,6 +2334,9 @@ if(!e7Collision) { //Solo se mueve si no hay colision
 
 }
 
+}
+}
+
 srand (time(NULL));
 int ramdom;
 ramdom= rand() % 10;
@@ -2670,6 +2678,8 @@ if(bbm5.intersectsRect(bbE2))
     e3.setHealth(0);
   }
 //---------
+
+if(ronda2){
 if(bbm5.intersectsRect(bbE4))
 {
   explosion(misil5);
@@ -2704,8 +2714,10 @@ if(bbm5.intersectsRect(bbE5))
 }
 
 
-//------------
 
+
+//------------
+if(ronda3){
 if(bbm5.intersectsRect(bbE6))
 {
   explosion(misil5);
@@ -2738,7 +2750,8 @@ if(bbm5.intersectsRect(bbE7))
   if(e7.getHealth()<0)
   e7.setHealth(0);
 }
-
+}
+}
 //-----------
 
 
@@ -3154,44 +3167,181 @@ explosion2(_enemy7);
 	    audioMCC->stopBackgroundMusic();
 	    Director::sharedDirector()->pause();
 	}
-    }
-    if(!e2.getHealth() && !e1.getHealth() && !e3.getHealth()  && !e4.getHealth() && !e5.getHealth() && !e6.getHealth() && !e7.getHealth() ) {
+}//lola
+    if(!e2.getHealth() && !e1.getHealth() && !e3.getHealth() &&!ronda2  ) {
 
+    setEnemy1Position(ccp(530,100));
+    setEnemy2Position(ccp(580,590));
+    setEnemy3Position(ccp(350,500));
+      e1.setHealth(200);
+      e2.setHealth(200);
+      e3.setHealth(200);
       ronda2=true;
 
-
-
-
-	// auto gameOver = Label::createWithTTF("Level 1 clear", "fonts/Marker Felt.ttf", 26);
-  //   	gameOver->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
-  //   	this->addChild(gameOver, 1);
-	// deltaGO = std::chrono::duration<double, std::milli>(high_resolution_clock::now()-startGO).count();
-	// endGO += deltaGO;
-	// if (endGO > 5) {
-	//     pause = true;
-	//     audioAA->stopAllEffects();
-	//     audioMCC->stopBackgroundMusic();
-	//     Director::sharedDirector()->pause();
-	// }
+	    }
+    if(!e2.getHealth() && !e1.getHealth() && !e3.getHealth()   && !e4.getHealth() && !e5.getHealth() &&!ronda3 ){
+      setEnemy1Position(ccp(530,100));
+      setEnemy2Position(ccp(580,590));
+      setEnemy3Position(ccp(350,500));
+      setEnemy4Position(ccp(550,300));
+      setEnemy5Position(ccp(650,400));
+                e1.setHealth(200);
+                e2.setHealth(200);
+                e3.setHealth(200);
+                e4.setHealth(200);
+                e5.setHealth(200);
+      ronda3=true;
     }
 
-
-
-    if(ronda2){
-      // _enemy4->runAction(FadeIn::create(2.0f));
-      // _enemy4->setOpacity(50);
-      _enemy4->runAction(FadeOut::create(0.0f));
-
-      auto gameOver = Label::createWithTTF("Ronda2", "fonts/Marker Felt.ttf", 26);
+    if(!e2.getHealth() && !e1.getHealth() && !e3.getHealth()   && !e4.getHealth() && !e5.getHealth() && !e6.getHealth() && !e7.getHealth() ){
+      auto gameOver = Label::createWithTTF("You win", "fonts/Marker Felt.ttf", 26);
         	gameOver->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height/2));
         	this->addChild(gameOver, 1);
-
-
-
-
+    	deltaGO = std::chrono::duration<double, std::milli>(high_resolution_clock::now()-startGO).count();
+    	endGO += deltaGO;
+    	if (endGO > 5) {
+    	    pause = true;
+    	    audioAA->stopAllEffects();
+    	    audioMCC->stopBackgroundMusic();
+    	    Director::sharedDirector()->pause();
+    	}
 
     }
 
+
+    if(!ronda2){
+
+      fade(_enemy4);
+      fade(_enemy6);
+      fade(_enemy5);
+      fade(_enemy7);
+    }
+
+    if(!ronda3){
+
+      fade(_enemy6);
+      fade(_enemy7);
+
+    }
+
+    // if(ronda1){
+    //
+    //
+    //   if(ramdom>4 &&ramdom<8){
+    //
+    //       dispararMisilENemigo2();
+    //
+    //   }
+    //
+    //   if(ramdom<3){
+    //   dispararMisilENemigo1();
+    //   dispararMisilENemigo3();
+    //   }
+    //
+    // }
+
+    if(ronda2){
+
+      //
+      // if(ramdom>4 &&ramdom<8){
+      //
+      // dispararMisilENemigo4();
+      // dispararMisilENemigo2();
+      //
+      // }
+      //
+      // if(ramdom<3){
+      // dispararMisilENemigo1();
+      // dispararMisilENemigo3();
+      // dispararMisilENemigo5();
+      //
+      //
+      // }
+
+
+
+      fade1(_enemy1);
+      fade2(_enemy2);
+      fade3(_enemy3);
+      fade4(_enemy4);
+      fade5(_enemy5);
+
+
+      if(!e1.getHealth())
+    explosion2(_enemy1);
+
+      if(!e2.getHealth())
+    explosion2(_enemy2);
+
+    if(!e3.getHealth())
+  explosion2(_enemy3);
+
+  if(!e4.getHealth())
+  explosion2(_enemy4);
+
+  if(!e5.getHealth())
+  explosion2(_enemy5);
+
+  if(!e6.getHealth())
+  explosion2(_enemy6);
+
+  if(!e7.getHealth())
+  explosion2(_enemy7);
+    }
+
+    if(ronda3){
+
+// if(ramdom>7){
+//
+// dispararMisilENemigo7();
+// dispararMisilENemigo6() ;
+// }
+//
+// if(ramdom>4 &&ramdom<8){
+//
+// dispararMisilENemigo4();
+// dispararMisilENemigo2();
+//
+// }
+//
+// if(ramdom<3){
+// dispararMisilENemigo1();
+// dispararMisilENemigo3();
+// dispararMisilENemigo5();
+//
+//
+// }
+      fade1(_enemy1);
+      fade2(_enemy2);
+      fade3(_enemy3);
+      fade4(_enemy4);
+      fade5(_enemy5);
+
+      fade6(_enemy6);
+      fade7(_enemy7);
+
+
+      if(!e1.getHealth())
+    explosion2(_enemy1);
+
+      if(!e2.getHealth())
+    explosion2(_enemy2);
+
+    if(!e3.getHealth())
+  explosion2(_enemy3);
+
+  if(!e4.getHealth())
+  explosion2(_enemy4);
+
+  if(!e5.getHealth())
+  explosion2(_enemy5);
+
+  if(!e6.getHealth())
+  explosion2(_enemy6);
+
+  if(!e7.getHealth())
+  explosion2(_enemy7);
+    }
 
 
 }
@@ -3274,15 +3424,159 @@ mine=false;
 }
 
 
+void ModoArcade::fade(Sprite *player)
+{
+
+  Vector<SpriteFrame*> animFrames(4);
+  char str[100] = {0};
+  for(int i = 1; i < 5; i++) {
+sprintf(str, "trans%d.png",i);
+auto frame = SpriteFrame::create(str,Rect(0,0,50,63));
+animFrames.pushBack(frame);
+  }
+  auto animation = Animation::createWithSpriteFrames(animFrames, 0.25f);
+  auto animate = Animate::create(animation);
+  player->runAction(animate);
+  player->runAction(FadeIn::create(0.0f));
+  startGO = high_resolution_clock::now();
 
 
+    }
+
+
+    void ModoArcade::fade1(Sprite *player)
+    {
+
+      Vector<SpriteFrame*> animFrames(4);
+      char str[100] = {0};
+      for(int i = 1; i < 5; i++) {
+    sprintf(str, "tank1.png",i);
+    auto frame = SpriteFrame::create(str,Rect(0,0,110,264));
+    animFrames.pushBack(frame);
+      }
+      auto animation = Animation::createWithSpriteFrames(animFrames, 0.25f);
+      auto animate = Animate::create(animation);
+      player->runAction(animate);
+      player->runAction(FadeOut::create(0.0f));
+      startGO = high_resolution_clock::now();
+
+
+}
+void ModoArcade::fade2(Sprite *player)
+{
+
+  Vector<SpriteFrame*> animFrames(4);
+  char str[100] = {0};
+  for(int i = 1; i < 5; i++) {
+sprintf(str, "tank2.png",i);
+auto frame = SpriteFrame::create(str,Rect(0,0,110,264));
+animFrames.pushBack(frame);
+  }
+  auto animation = Animation::createWithSpriteFrames(animFrames, 0.25f);
+  auto animate = Animate::create(animation);
+  player->runAction(animate);
+  player->runAction(FadeOut::create(0.0f));
+  startGO = high_resolution_clock::now();
+
+
+}
+void ModoArcade::fade3(Sprite *player)
+{
+
+  Vector<SpriteFrame*> animFrames(4);
+  char str[100] = {0};
+  for(int i = 1; i < 5; i++) {
+sprintf(str, "tank3.png",i);
+auto frame = SpriteFrame::create(str,Rect(0,0,110,264));
+animFrames.pushBack(frame);
+  }
+  auto animation = Animation::createWithSpriteFrames(animFrames, 0.25f);
+  auto animate = Animate::create(animation);
+  player->runAction(animate);
+  player->runAction(FadeOut::create(0.0f));
+  startGO = high_resolution_clock::now();
+
+
+}
+void ModoArcade::fade4(Sprite *player)
+{
+
+  Vector<SpriteFrame*> animFrames(4);
+  char str[100] = {0};
+  for(int i = 1; i < 5; i++) {
+sprintf(str, "tank4.png",i);
+auto frame = SpriteFrame::create(str,Rect(0,0,110,264));
+animFrames.pushBack(frame);
+  }
+  auto animation = Animation::createWithSpriteFrames(animFrames, 0.25f);
+  auto animate = Animate::create(animation);
+  player->runAction(animate);
+  player->runAction(FadeOut::create(0.0f));
+  startGO = high_resolution_clock::now();
+
+
+}
+void ModoArcade::fade5(Sprite *player)
+{
+
+  Vector<SpriteFrame*> animFrames(4);
+  char str[100] = {0};
+  for(int i = 1; i < 5; i++) {
+sprintf(str, "tank5.png",i);
+auto frame = SpriteFrame::create(str,Rect(0,0,110,264));
+animFrames.pushBack(frame);
+  }
+  auto animation = Animation::createWithSpriteFrames(animFrames, 0.25f);
+  auto animate = Animate::create(animation);
+  player->runAction(animate);
+  player->runAction(FadeOut::create(0.0f));
+  startGO = high_resolution_clock::now();
+
+
+}
+void ModoArcade::fade6(Sprite *player)
+{
+
+  Vector<SpriteFrame*> animFrames(4);
+  char str[100] = {0};
+  for(int i = 1; i < 5; i++) {
+sprintf(str, "tank6.png",i);
+auto frame = SpriteFrame::create(str,Rect(0,0,114,286));
+animFrames.pushBack(frame);
+  }
+  auto animation = Animation::createWithSpriteFrames(animFrames, 0.25f);
+  auto animate = Animate::create(animation);
+  player->runAction(animate);
+  player->runAction(FadeOut::create(0.0f));
+  startGO = high_resolution_clock::now();
+
+
+}
+void ModoArcade::fade7(Sprite *player)
+{
+
+  Vector<SpriteFrame*> animFrames(4);
+  char str[100] = {0};
+  for(int i = 1; i < 5; i++) {
+sprintf(str, "tank7.png",i);
+auto frame = SpriteFrame::create(str,Rect(0,0,110,264));
+animFrames.pushBack(frame);
+  }
+  auto animation = Animation::createWithSpriteFrames(animFrames, 0.25f);
+  auto animate = Animate::create(animation);
+  player->runAction(animate);
+  player->runAction(FadeOut::create(0.0f));
+  startGO = high_resolution_clock::now();
+
+
+}
 
 
 void ModoArcade::explosion(Sprite *player)
 {
     Vector<SpriteFrame*> animFrames(4);
     char str[100] = {0};
-    for(int i = 1; i < 5; i++) {
+    for(int i = 1; i < 6; i++) {
 	sprintf(str, "exp%d.png",i);
 	auto frame = SpriteFrame::create(str,Rect(0,0,50,63));
 	animFrames.pushBack(frame);
@@ -3298,7 +3592,7 @@ void ModoArcade::explosion2(Sprite *player)
 {
     Vector<SpriteFrame*> animFrames(4);
     char str[100] = {0};
-    for(int i = 1; i < 5; i++) {
+    for(int i = 1; i < 6; i++) {
 	sprintf(str, "exp%d.png",i);
 	auto frame = SpriteFrame::create(str,Rect(0,0,50,63));
 	animFrames.pushBack(frame);
@@ -4375,7 +4669,7 @@ bool ModoArcade::init()
     //    _enemy1->setPosition(ccp(x-400,y+150));
     _enemy1->setScale(0.3);
     tileMap->addChild(_enemy1,1);
-
+//lala
     //Se crea el sprite de enemigo 2
     auto Enemy2 = objects->getObject("Enemy2");
     int x4 = Enemy2["x"].asInt();
